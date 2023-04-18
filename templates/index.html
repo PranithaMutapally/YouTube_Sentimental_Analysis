@@ -1,0 +1,98 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>BATCH-3</title>
+  <link rel="stylesheet" type="text/css" href="{%static 'styles.css' %}">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body class="background">
+  <h1
+    style="color:rgb(102, 17, 30); font-family: Copperplate,Copperplate Gothic,fantasy; font-size: 45px; font-weight: bold;">
+    Rating System for YouTube Video <br>
+    <h4 style="font-size: 30px;font-family: 'Mukta', sans-serif;">Based On
+      Comments Using Sentiment Analysis</h4>
+  </h1>
+  <br>
+  <br>
+
+  <div style="width:40%;">
+
+    <form method="get" action="user">
+
+      <div class="form">
+        <h4 class="text" style="display: block; text-align: center; margin-bottom: 20px; color: rgb(41, 95, 148);
+        font-family: 'Cabin', sans-serif;">
+          Analyse comments and give rating to desired youtube video</h4>
+
+        <h4 class="text"></h4>
+        <div class="col-lg-12">
+          <div >
+            <div style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+              <label for="num"><b>NUMBER&nbsp;OF&nbsp;LINKS&nbsp;:</b></label>
+              <input type="text" class="form-control m-input" name="num" placeholder="ENTER NUMBER OF LINK"
+                style="color:black">
+            </div>
+
+            <div class="input-group m-3" id="row">
+
+              <div class="input-group-prepend">
+
+                <button class="btn btn-danger" id="DeleteRow" type="button">
+                  <i class="bi bi-trash"></i>
+                  Delete
+                </button>
+              </div>
+              <input type="text" class="form-control m-input" name="url1" placeholder="ENTER THE LINK">
+            </div>
+          </div>
+
+          <div id="newinput"></div>
+          <button id="rowAdder" type="button" class="btn btn-primary">
+            <span class="bi bi-plus-square-dotted">
+            </span> ADD
+          </button>
+          <br>
+          <br>
+          <button class="submit" type="submit">Submit</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+  <script type="text/javascript">
+    var c = 2;
+    $("#rowAdder").click(function () {
+
+      newRowAdd =
+        '<div id="row"> <div class="input-group m-3">' +
+        '<div class="input-group-prepend">' +
+        '<button class="btn btn-danger" id="DeleteRow" type="button">' +
+        '<i class="bi bi-trash"></i> Delete</button> </div>' +
+        '<input type="text" class="form-control m-input" name = "url' + c + '"> </div> </div>';
+      c++;
+      $('#newinput').append(newRowAdd);
+    });
+
+    $("body").on("click", "#DeleteRow", function () {
+      c--;
+
+      $(this).parents("#row").remove();
+    })
+  </script>
+
+</body>
+
+</html>
